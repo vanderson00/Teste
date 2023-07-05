@@ -1,0 +1,157 @@
+#AWS Credentials
+variable "access_key" {}
+variable "secret_key" {}
+
+##########################################################
+#              AWS Regions & AZs to be used              #
+##########################################################
+
+#Default Region
+variable "variable_aws_default_region" {
+    type = string
+    description = "AWS Default Region"
+    default = "us-east-1"
+}
+
+#Default AZ 1
+variable "variable_aws_default_AZ_1" {
+    type = string
+    description = "AWS Default Availability Zone 1"
+    default = "us-east-1a"
+}
+
+#Default AZ 2
+variable "variable_aws_default_AZ_2" {
+    type = string
+    description = "AWS Default Availability Zone 2"
+    default = "us-east-1b"
+}
+
+##########################################################
+#                   Spoke VPCs CIDRs                     #
+##########################################################
+
+# CIDR of Spoke VPC 01
+variable "Variable_Subnet_SpokeVPC01" {
+    type = string
+    description = "SpokeVPC01 Subnet"
+    default = "172.30.50.0/24"
+}
+
+# CIDR of Spoke VPC 02
+variable "Variable_Subnet_SpokeVPC02" {
+    type = string
+    description = "SpokeVPC01 Subnet"
+    default = "172.30.60.0/24"
+}
+
+##########################################################
+#                   Spoke VPCs Routes                    #
+##########################################################
+
+# Routes for Spoke VPCs
+variable "Spokes_default_route" {
+  type        = string
+  description = "Spokes Default Route"
+  default     = "0.0.0.0/0"
+}
+
+# Routes for Spoke VPCs
+variable "Spoke01-RT-Spoke02" {
+  type        = string
+  description = "Spokes Default Route"
+  default     = "172.30.60.0/24"
+}
+
+# Routes for Spoke VPCs
+variable "Spoke02-RT-Spoke01" {
+  type        = string
+  description = "Spokes Default Route"
+  default     = "172.30.50.0/24"
+}
+
+##########################################################
+#                   Instances' Spokes                    #
+##########################################################
+
+#Family & Size of the Spokes' VMs
+variable "variable_spokes_instances_size" {
+    type = string
+    description = "Default instance shape for the VMs"
+    default = "t2.micro"
+}
+
+#LAMP Image under usage
+variable "variable_spokes_instances_AMI" {
+    type = string
+    description = "Default instance image for the VMs"
+    default = "ami-07a4f89d1f8c5475f"
+}
+
+#SSH Key pair created in AWS Portal and used in the instances
+variable "variable_spokes_key" {
+  type = string
+  description = "Default Key Pair for Spokes VMs"
+  default = "SpokesInstances-keypair"
+}
+
+##########################################################
+#                 Security VPC Variables                 #
+##########################################################
+
+variable "security_vpc_cidr" {
+  type = string
+  description = "Default Security VPC CIDR"
+  default = "172.31.0.0/16"
+}
+
+variable "mgmt_subnet_cidr" {
+  type = string
+  description = "MGMT Subnet CIDR"
+  default = "172.31.10.0/24"
+}
+
+variable "untrusted_subnet_cidr" {
+  type = string
+  description = "Untrusted Subnet CIDR"
+  default = "172.31.20.0/24"
+}
+
+variable "ha_subnet_cidr" {
+  type = string
+  description = "HA Subnet CIDR"
+  default = "172.31.30.0/24"
+}
+
+variable "trusted_subnet_cidr" {
+  type = string
+  description = "Trusted Subnet CIDR"
+  default = "172.31.40.0/24"
+}
+
+# Routes for Security Hub
+variable "SecurityHub_default_route" {
+  type        = string
+  description = "Security HUB Default Route"
+  default     = "0.0.0.0/0"
+}
+
+##########################################################
+#                   FortiFlex Variables                  #
+##########################################################
+
+variable "username"{
+  type = string
+  description = "FortiFlex Username"
+}
+
+variable "password"{
+  type = string
+  description = "FortiFlex Password"
+}
+
+variable "Flex_Account" {
+  type = string
+  description = "FortiFlex Account"
+  default = "FEXVME0000000709"
+}
