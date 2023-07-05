@@ -1,6 +1,6 @@
 #AWS Credentials
-variable "access_key" {}
-variable "secret_key" {}
+variable "access_key" {AKIAR5JHBXAUL5XGHRM4}
+variable "secret_key" {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}
 
 ##########################################################
 #              AWS Regions & AZs to be used              #
